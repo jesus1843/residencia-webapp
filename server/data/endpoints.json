@@ -1,0 +1,50 @@
+{
+    "endpoints": {
+        "description": "Grupo de Endpoints de la API de la Residencia",
+        "groups": {
+            "auth": {
+                "description": "Endpoints para la autenticación",
+                "prefix": "/auth",
+                "routes": {
+                    "login": {
+                        "description": "Endpoint para iniciar sesión",
+                        "prefix": "/login",
+                        "method": "POST",
+                        "body": [
+                            {
+                                "name": "email",
+                                "dataType": "string"
+                            },
+                            {
+                                "name": "password",
+                                "dataType": "string"
+                            }
+                        ]
+                    }
+                }
+            },
+            "streets": {
+                "description": "Endpoints para las calles",
+                "prefix": "/streets",
+                "routes": {
+                    "index": {
+                        "description": "Endpoint para regresar todas las calles",
+                        "prefix": "/",
+                        "method": "GET"
+                    },
+                    "show": {
+                        "description": "Endpoint para regresar una calle en específico",
+                        "prefix": "/:streetId",
+                        "method": "GET",
+                        "params": [
+                            {
+                                "name": "streetId",
+                                "dataType": "number"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
