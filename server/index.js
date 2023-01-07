@@ -8,6 +8,20 @@ const { sequelize } = require('./models');
 const server = express();
 
 
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+/**
+ * WebApp Routes
+ */
+server.use('/', require('./routes'));
+
+/**
+ * API Endpoints
+ */
+server.use('/api', require('./routes/api'));
+
+
 (async function() {
     try {
         await sequelize.authenticate();
