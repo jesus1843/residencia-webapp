@@ -8,7 +8,23 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
 
     static associate(models) {
-      // define association here
+      User.hasOne(models.Profile, {
+        onDelete: 'CASCADE',
+        onUpdate: 'RESTRICT',
+        foreignKey: {
+          name: 'userId',
+          allowNull: false
+        }
+      });
+
+      User.hasMany(models.Hash, {
+        onDelete: 'CASCADE',
+        onUpdate: 'RESTRICT',
+        foreignKey: {
+          name: 'userId',
+          allowNull: false
+        }
+      });
     }
 
     validPassword(password='') {
@@ -18,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }
 
+
   User.init({
     email: DataTypes.STRING,
     password: DataTypes.STRING,
@@ -26,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+
 
   return User;
 };

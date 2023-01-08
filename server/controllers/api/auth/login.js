@@ -1,14 +1,18 @@
 const jwt = require('jsonwebtoken');
 
 const { sequelize } = require('../../../models');
-const { User } = sequelize.models;
+const { User, Profile } = sequelize.models;
 
 
 module.exports.login = async(req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({
-        where: { email }
+        where: { email },
+        include: {
+            model: Profile,
+            attributes: ['id', 'userId', 'firstName', 'lastName', 'avatar']
+        }
     });
 
     if (!user) {
@@ -28,12 +32,13 @@ module.exports.login = async(req, res) => {
     const userData = {
         id: user.id,
         email: user.email,
+        profile: { ...user.Profile.toJSON() },
         createdAt: user.createdAt,
         updatedAt: user.updatedAt
     };
 
     const token = jwt.sign(
-        userData,
+        { user: userData },
         process.env.SECRET_JWT,
         {
             expiresIn: +process.env.EXPIRATION_JWT
