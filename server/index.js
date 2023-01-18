@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors');
 const express = require('express');
 
 const { sequelize } = require('./models');
@@ -10,6 +11,7 @@ const server = express();
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use(cors());
 
 /**
  * WebApp Routes
