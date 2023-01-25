@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   Occupant.init({
     houseId: {
       type: DataTypes.INTEGER,
-      unique: true,
       allowNull: false
     },
     name: DataTypes.STRING,

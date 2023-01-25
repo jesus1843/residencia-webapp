@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Street.init({
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      unique: true
+    }
   }, {
     sequelize,
     modelName: 'Street',

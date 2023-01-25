@@ -13,8 +13,14 @@ module.exports = (sequelize, DataTypes) => {
 
 
   Hash.init({
-    type: DataTypes.STRING,
-    value: DataTypes.STRING
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    value: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Hash',

@@ -23,10 +23,13 @@ module.exports = (sequelize, DataTypes) => {
   House.init({
     streetId: {
       type: DataTypes.INTEGER,
-      unique: true,
       allowNull: false
     },
-    number: DataTypes.INTEGER
+    number: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    }
   }, {
     sequelize,
     modelName: 'House',
