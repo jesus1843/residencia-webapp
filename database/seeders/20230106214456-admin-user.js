@@ -1,8 +1,5 @@
 'use strict';
-
 const crypto = require('crypto');
-
-const randomString = require('randomstring');
 
 
 /** @type {import('sequelize-cli').Migration} */
