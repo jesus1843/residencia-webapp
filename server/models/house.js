@@ -8,6 +8,15 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       House.belongsTo(models.Street);
+
+      House.hasMany(models.Occupant, {
+        onDelete: 'CASCADE',
+        onUpdate: 'RESTRICT',
+        foreignKey: {
+          name: 'houseId',
+          allowNull: false
+        }
+      });
     }
   }
 
