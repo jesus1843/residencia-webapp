@@ -1,6 +1,8 @@
-const { isAuthenticated } = require('./isAuthenticated');
+const { isAuthenticatedHeader } = require('./isAuthenticatedHeader');
+const { isAuthenticatedToken } = require('./isAuthenticatedToken');
 
 
 module.exports = {
-    isAuthenticated
+    isAuthenticatedHeader,
+    isAuthenticatedToken
 }

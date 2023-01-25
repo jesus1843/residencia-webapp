@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/auth', require('./auth'));
-router.use('/streets', [AuthMiddlewares.isAuthenticated], require('./streets'));
+router.use('/streets', [AuthMiddlewares.isAuthenticatedHeader], require('./streets'));
 
 
 module.exports = router;

@@ -3,29 +3,25 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Profile extends Model {
+
+  class House extends Model {
 
     static associate(models) {
-      Profile.belongsTo(models.User);
+      House.belongsTo(models.Street);
     }
-
   }
 
-
-  Profile.init({
-    userId: {
+  House.init({
+    streetId: {
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false
     },
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    avatar: DataTypes.STRING
+    number: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Profile',
+    modelName: 'House',
   });
 
-
-  return Profile;
+  return House;
 };
